@@ -2,7 +2,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import {
-  CalendarDays, MapPin, PartyPopper, Gift, Sparkles,
+  CalendarDays, MapPin, PartyPopper, GlassWater, Sparkles,
   ClipboardList, Cake, Camera
 } from "lucide-react";
 import Countdown from "./components/Countdown.jsx";
@@ -10,13 +10,13 @@ import Countdown from "./components/Countdown.jsx";
 export default function App() {
   // ==== TUS DATOS ====
   const titulo       = "¡Cumple Tute!";
-  const frase        = "Los invito a pasar una linda noche, con comida rica, musiquita y buena ondaaa.";
-  const fechaHumana  = "10/10/2025";
-  const horaHumana   = "20:30hs";
-  const fechaISO     = "2025-10-10T20:30:00-03:00"; // AR
+  const frase        = "Los invito a mi cumple, con musiquita y buena ondaaa.";
+  const fechaHumana  = "10/10/2026";
+  const horaHumana   = "23:00hs";
+  const fechaISO     = "2026-10-10T23:00:00-03:00"; // AR
   const lugar        = "Gandolfo 2925, Virreyes.";
   const googleMaps   = "https://maps.app.goo.gl/Pt2ePuvTsAtZD8wg7";
-  const dressCode    = "💙Algo azul💙";
+  const Escabio    = "Traigan escabio, asi es más divertido.";
 
   // >>> PONÉ ACÁ EL LINK DE TU GOOGLE FORM <<<
   const googleFormLink = "https://forms.gle/VT8ANcLiHy97LKgd8";
@@ -61,7 +61,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full relative overflow-hidden bg-gradient-to-b from-[#0b1b4a] via-[#132a7a] to-[#0b1b4a] text-white">
+    <div
+  className="min-h-screen w-full relative overflow-hidden text-white"
+  style={{
+    backgroundColor: "#071b5c",
+    backgroundImage: 'url("/galeria/fondo.png")',
+    backgroundRepeat: "repeat",
+    backgroundPosition: "center top",
+    backgroundSize: "300px auto"
+  }}
+>
       {/* Mesh de azules */}
       <div
         className="pointer-events-none absolute inset-0 opacity-70"
@@ -95,7 +104,7 @@ export default function App() {
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
               <InfoCard icon={<CalendarDays className="size-6" />} title="Cuándo" text={`${fechaHumana}\n${horaHumana}`} />
               <InfoCard icon={<MapPin className="size-6" />}      title="Dónde"  text={lugar} linkText="Abrir mapa" href={googleMaps} />
-              <InfoCard icon={<Gift className="size-6" />}        title="Dress Code" text={"💙Algo azul💙"} />
+              <InfoCard icon={<GlassWater className="size-6" />}        title="Escabio" text={Escabio} />
             </div>
 
             {/* CTAs */}
@@ -119,26 +128,6 @@ export default function App() {
                 <Cake className="size-4" /> Agregar al calendario
               </a>
             </div>
-
-            {/* Galería */}
-            <section className="mt-10 text-left">
-              <h3 className="text-lg font-semibold flex items-center gap-2">
-                <Camera className="size-5 text-blue-200" /> Galería
-              </h3>
-              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
-                {["/galeria/Cande","/galeria/Yo.jfif","/galeria/Sofi.JPG","/galeria/los-pibes.jfif","/galeria/Mia-Vicky.jpg","/galeria/Gesell.jfif"].map((src) => (
-                  <motion.img
-                    key={src}
-                    src={src}
-                    alt="Foto"
-                    loading="lazy"
-                    className="aspect-square object-cover rounded-xl border border-white/10 bg-white/5"
-                    whileHover={{ scale: 1.03 }}
-                    onError={(e) => { e.currentTarget.style.opacity = 0.2; e.currentTarget.alt = "Agregá tu foto en "+src; }}
-                  />
-                ))}
-              </div>
-            </section>
           </div>
         </motion.section>
       </main>
